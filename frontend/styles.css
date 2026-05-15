@@ -1,0 +1,122 @@
+:root {
+  --bg: #0b1020;
+  --card: #131a2e;
+  --muted: #9ea7bf;
+  --text: #eef2ff;
+  --accent: #35c2ff;
+  --accent-hover: #1ea8e2;
+  --border: #273150;
+  --user-bubble: #1d2850;
+  --bot-bubble: #162038;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #151d38 0%, var(--bg) 50%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.chat-card {
+  width: min(840px, 100%);
+  background: linear-gradient(180deg, #182342, var(--card));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.subtitle {
+  margin: 6px 0 16px;
+  color: var(--muted);
+}
+
+.chat-log {
+  min-height: 280px;
+  max-height: 420px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  background: #0e1529;
+  margin-bottom: 14px;
+}
+
+.msg {
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.msg.user {
+  background: var(--user-bubble);
+}
+
+.msg.bot {
+  background: var(--bot-bubble);
+}
+
+.chat-form textarea {
+  width: 100%;
+  resize: vertical;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0d1426;
+  color: var(--text);
+  padding: 12px;
+  font-size: 0.98rem;
+}
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  background: var(--accent);
+  color: #041018;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .chat-card {
+    padding: 14px;
+  }
+
+  .chat-log {
+    min-height: 240px;
+  }
+}
