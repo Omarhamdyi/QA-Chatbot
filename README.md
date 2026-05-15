@@ -40,29 +40,6 @@ QA-Chatbot/
 └── README.md
 ```
 
-## API Endpoints
-
-- `POST /api/ask-stream`
-  - Single question streaming text response.
-  - Body:
-    ```json
-    { "question": "What is AI?" }
-    ```
-
-- `POST /api/ask`
-  - Single question structured response (`QAResponse` JSON).
-  - Body:
-    ```json
-    { "question": "What is AI?" }
-    ```
-
-- `POST /api/ask-batch`
-  - Multiple questions in one request.
-  - Body:
-    ```json
-    { "questions": ["What is AI?", "What is ML?"] }
-    ```
-
 ## Setup Instructions (Windows PowerShell)
 
 ### 1) Clone and open project
@@ -107,6 +84,7 @@ LANGSMITH_PROJECT=QA-Chatbot
 Notes:
 - `COHERE_API_KEY` is required for model calls.
 - `LANGSMITH_API_KEY` is optional (only for tracing/observability).
+- `Provider Flexibility:` In this project i used Cohere, but it can be easily adapted to any LLM provider of your choice (e.g., OpenAI, Anthropic)
 
 ### 6) Run the app
 
@@ -135,27 +113,3 @@ If `python` command does not work:
   - Type each question on a separate line.
   - Click **Send**.
   - App uses batch endpoint and returns all answers.
-
-## Troubleshooting
-
-- `python` not recognized:
-  - Use:
-    ```powershell
-    .\.venv\Scripts\python.exe -m uvicorn app:app --reload
-    ```
-
-- No model response / API errors:
-  - Check `.env` values, especially `COHERE_API_KEY`.
-
-- Port already in use:
-  - Run on different port:
-    ```powershell
-    python -m uvicorn app:app --reload --port 8001
-    ```
-
-## Future Improvements
-
-- Single-call streaming + structured final payload in one endpoint (SSE).
-- Conversation history/memory.
-- Authentication and rate limiting.
-- Docker setup for one-command run.
